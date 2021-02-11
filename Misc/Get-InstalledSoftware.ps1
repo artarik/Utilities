@@ -57,7 +57,7 @@ Function Get-InstalledSoftware {
             foreach ($subName in $regKey.GetSubkeyNames()) {
                 foreach($sub in $regKey.OpenSubkey($subName)) {
                     $masterKeys += (New-Object PSObject -Property @{
-                        "ComputerName" = $Name
+                        "ComputerName" = [String]::Join("", $Name)
                         "Name" = $sub.GetValue("displayname")
                         "SystemComponent" = $sub.GetValue("systemcomponent")
                         "ParentKeyName" = $sub.GetValue("parentkeyname")
